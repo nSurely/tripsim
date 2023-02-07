@@ -7,7 +7,7 @@ from setuptools import find_packages, setup
 def read(*paths, **kwargs):
     """Read the contents of a text file safely.
     >>> read("tripsim", "VERSION")
-    '0.1.6'
+    '0.1.0'
     >>> read("README.md")
     ...
     """
@@ -32,7 +32,7 @@ def read_requirements(path):
 setup(
     name="tripsim",
     version=read("tripsim", "VERSION"),
-    description="Inaza Motor Python SDK",
+    description="Simple driving trip simulator for OpenStreetMap graphs",
     url="https://github.com/nSurely/tripsim/",
     long_description=read("README.md"),
     long_description_content_type="text/markdown",
