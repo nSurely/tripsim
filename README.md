@@ -57,4 +57,4 @@ if __name__ == '__main__':
 
 The created trip should look something like this when plotted.  
 
-[https://i.ibb.co/zZBZhJx/cork-trip.png](trip)  
+![trip](https://i.ibb.co/zZBZhJx/cork-trip.png)  
