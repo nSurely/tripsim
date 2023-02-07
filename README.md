@@ -38,9 +38,13 @@ def main():
     )
 
     # the points are a dataclass with a few convenience methods
-    coords = [(point.get_lat(), point.get_lon())
-              for point in trip]
+    coords = [
+        (point.get_lat(), point.get_lon())
+        for point in trip
+    ]
 
+    # here we are setting the list of coords as a LineString
+    # for easy plotting
     coords_graph_line = LineString(coords)
     x, y = coords_graph_line.xy
 
