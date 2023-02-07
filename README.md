@@ -7,11 +7,12 @@ Driving trip simulator for building a series of coordinates that can be used for
 ## Getting Started  
 
 ```python
-import osmnx as ox
+from tripsim import simulate_trip
+
+# other imports for this example
 import matplotlib.pyplot as plt
 from shapely.geometry import LineString
 import osmnx as ox
-from tripsim import simulate_trip
 
 
 def main():
