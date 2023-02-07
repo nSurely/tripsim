@@ -123,7 +123,7 @@ def remove_duplicate_points(points: List[Point]) -> List[Point]:
 
 
 def simulate_trip(graph: nx.MultiDiGraph,
-                  start_time: float,
+                  start_time: float = 0,
                   start_coord: Optional[tuple] = None,
                   end_coord: Optional[tuple] = None,
                   period_seconds: int = 5,
