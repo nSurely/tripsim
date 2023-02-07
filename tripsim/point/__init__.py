@@ -6,6 +6,7 @@ from typing import Tuple
 
 @dataclass
 class Point:
+    "A point coordinate with a timestamp and meta data"
     lat: float
     lon: float
     timestamp: float = 0.0
