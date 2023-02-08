@@ -1,13 +1,13 @@
 import osmnx as ox
-import random
 import networkx as nx
+import random
 from geopy.distance import geodesic
 from shapely.geometry import LineString
-from typing import List, Tuple
-import random
-import osmnx as ox
+
+# types
 from typing import List, Tuple, Optional
 
+# internal
 from .point import Point
 
 
