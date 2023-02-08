@@ -7,7 +7,7 @@ from setuptools import find_packages, setup
 def read(*paths, **kwargs):
     """Read the contents of a text file safely.
     >>> read("tripsim", "VERSION")
-    '0.1.2'
+    '0.1.3'
     >>> read("README.md")
     ...
     """
