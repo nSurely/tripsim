@@ -3,6 +3,8 @@ from dataclasses import dataclass, field
 import math
 from typing import Tuple
 
+from .distance import convert_units, DistanceUnit, haversine
+
 
 @dataclass
 class Point:
@@ -23,10 +25,12 @@ class Point:
 
     @property
     def x(self) -> float:
+        "Returns the longitude"
         return self.lon
 
     @property
     def y(self) -> float:
+        "Returns the latitude"
         return self.lat
 
     @property
@@ -34,12 +38,15 @@ class Point:
         return self.x, self.y
 
     def add_meta(self, key: str, value: any) -> None:
+        "Adds a key value pair to the meta data"
         self.meta[key] = value
 
-    def get_meta(self, key: str) -> any:
-        return self.meta[key]
+    def get_meta(self, key: str, default=None) -> any:
+        "Returns the value for the given key"
+        return self.meta.get(key, default)
 
     def bearing_to(self, other: 'Point') -> float:
+        "Returns the bearing from this point to the other point in degrees"
         x1, y1 = self.xy
         x2, y2 = other.xy
 
@@ -51,24 +58,22 @@ class Point:
         bearing = math.atan2(y, x)
         return math.degrees(bearing)
 
-    def distance_to(self, other: 'Point') -> float:
+    def distance_to(self, other: 'Point', unit: DistanceUnit = DistanceUnit.KILOMETERS) -> float:
+        "Returns the distance from this point to the other point in km"
         x1, y1 = self.xy
         x2, y2 = other.xy
-
-        y1, x1, y2, x2 = map(math.radians, [y1, x1, y2, x2])
-        delta_lon = x2 - x1
-        delta_lat = y2 - y1
-        a = math.sin(delta_lat / 2) ** 2 + math.cos(y1) * \
-            math.cos(y2) * math.sin(delta_lon / 2) ** 2
-        c = 2 * math.asin(math.sqrt(a))
-        return 6371 * c
+        return convert_units(
+            haversine(y1, x1, y2, x2),
+            DistanceUnit.KILOMETERS,
+            unit
+        )
 
     def next_point(self, distance: float, bearing: float) -> 'Point':
         "Returns a lat lon point that is distance away from start_coord in the direction of bearing"
         # Calculate the new point
         R = 6378.1
         brng = math.radians(bearing)
-        d = distance / 1000
+        d = distance
         lat1 = math.radians(self.lat)
         lon1 = math.radians(self.lon)
         lat2 = math.asin(math.sin(lat1) * math.cos(d / R) +
@@ -94,4 +99,5 @@ class Point:
             raise IndexError
 
     def as_tuple(self):
+        "Returns the point as a tuple, in the format (lat, lon) [(y, x)]"
         return (self.lat, self.lon)
