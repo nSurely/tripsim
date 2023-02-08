@@ -109,6 +109,8 @@ def remove_duplicate_points(points: List[Point]) -> List[Point]:
     Returns:
         List[Point]: the list of points with duplicates removed
     """
+    if not points:
+        return []
     # Create a new list of points
     new_points = []
     # Add the first point
