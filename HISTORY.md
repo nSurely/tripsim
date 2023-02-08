@@ -22,3 +22,8 @@ Changelog
 - PyPi Release. [Niall Crowley]
 - Release: version 0.1.3. [Niall Crowley]
 
+0.1.4 (2022-02-08)
+------------------
+- PyPi Release. [Niall Crowley]
+- Release: version 0.1.4. [Niall Crowley]
+
