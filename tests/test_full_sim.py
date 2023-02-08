@@ -1,4 +1,4 @@
-from ..sim import simulate_trip
+from tripsim import simulate_trip
 import osmnx as ox
 
 
